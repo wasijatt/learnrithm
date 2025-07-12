@@ -1,9 +1,13 @@
 
 import FAQSection from "./Components/FAQSection"
+import Testimonials from "./Components/Testimonials";
+import KeyFeatures from "./Components/KeyFeatures";
 export default function Home() {
   return (
-  <div className="flex justify-center items-center flex-col  w--full">
-    <h1 className="text-[6em]">Learnrithmm </h1>
+  <div className="flex justify-center items-center flex-col  w-full">
+   
+    <KeyFeatures />
+    <Testimonials />
     <FAQSection />
   </div>
   );
