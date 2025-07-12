@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import useAnimatedButton from "../Hooks/AnimatedButtonHook";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { AnimatedButtonProps } from "@/types/AnimatedButtonTypes"; // ⬅️ import from types folder
+import { AnimatedButtonProps } from "../types/AnimatedButtonType";
 
 const AnimatedButton: React.FC<AnimatedButtonProps> = ({
   href,
@@ -14,7 +14,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
   style = {},
 }) => {
   const {
-    isHovered,
+    
     translateX,
     translateY,
     setIsHovered,
@@ -43,9 +43,9 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
     }
   };
 
-  const handleMouseLeaveMerged = (e: MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseLeaveMerged = () => {
     setIsHovered(false);
-    handleMouseLeave(e);
+    handleMouseLeave();
 
     if (borderRef.current) {
       gsap.to(borderRef.current, {

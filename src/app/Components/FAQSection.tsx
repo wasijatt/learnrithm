@@ -26,13 +26,13 @@ const FAQSection: React.FC = () => {
         {
             question: "How does Learnrithm Ai Work?",
             answer:
-                "Learnrithm AI uses advanced AI algorithms to break down complex topics into simpler lessons. You can tell the AI what subject you're struggling with, and it will guide you step by step. You can also upload your own study materials, and the AI will analyze and teach the content in an easier-to-understand format. It's like having a personal tutor available 24/7!.",
+                "Learnrithm AI uses advanced AI algorithms to break down complex topics into simpler lessons. You can tell the AI what subject you are struggling with, and it will guide you step by step. You can also upload your own study materials, and the AI will analyze and teach the content in an easier-to-understand format. Its like having a personal tutor available 24/7!.",
             src: "https://i.pravatar.cc/100?img=2",
         },
         {
             question: "Who is Learnrithm AI for?",
             answer:
-                "Learnrithm AI is designed for students of all levels, from high school to university, and even for professionals looking to learn new skills. Whether you're preparing for exams, need help with a tough subject, or want to acquire a new skill, Learnrithm AI can provide tailored lessons and quizzes to suit your learning needs..",
+                "Learnrithm AI is designed for students of all levels, from high school to university, and even for professionals looking to learn new skills. Whether youre preparing for exams, need help with a tough subject, or want to acquire a new skill, Learnrithm AI can provide tailored lessons and quizzes to suit your learning needs..",
             src: "https://i.pravatar.cc/100?img=3",
         },
         {
@@ -50,7 +50,7 @@ const FAQSection: React.FC = () => {
         {
             question: "How are the quizzes in Learnrithm AI designed?",
             answer:
-                "The quizzes in Learnrithm AI are personalized to test your understanding of the topics you've studied. The AI generates quizzes based on the subject you're learning and the materials you've uploaded, helping you review and solidify your knowledge..",
+                "The quizzes in Learnrithm AI are personalized to test your understanding of the topics youve studied. The AI generates quizzes based on the subject youre learning and the materials youve uploaded, helping you review and solidify your knowledge..",
             src: "https://i.pravatar.cc/100?img=10",
         }, {
             question: "What platforms is Learnrithm AI available on?",
@@ -60,7 +60,7 @@ const FAQSection: React.FC = () => {
         }, {
             question: "Do I need any prior knowledge to use Learnrithm AI?",
             answer:
-                "No prior knowledge is necessary. Learnrithm AI caters to all learning levels, whether you're just starting out in a subject or looking for advanced content. The AI will adjust the lesson pace and depth based on your needs.",
+                "No prior knowledge is necessary. Learnrithm AI caters to all learning levels, whether youre just starting out in a subject or looking for advanced content. The AI will adjust the lesson pace and depth based on your needs.",
             src: "https://i.pravatar.cc/100?img=18",
         },
     ], []);
@@ -97,7 +97,7 @@ const FAQSection: React.FC = () => {
               ScrollTrigger.create({
                 trigger: faqRef.current,
                 start: "top top",
-                end: () => `+=${faqRef.current.offsetHeight}`,
+                end: () => `+=${faqRef.current?.offsetHeight}`,
                 pin: faqheadref.current,
                 pinSpacing: false,
                 scrub: false,
@@ -169,7 +169,7 @@ const FAQSection: React.FC = () => {
                 <div ref={faqheadref} className=" w-full lg:w-[40%] md:text-start p-4 text-center md:py-[13%]  md:px-8 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
                     <h1 className=" text-3xl md:text-6xl font-bold text-gray-900 mb-4">Frequently Asked Questions
                     </h1>
-                    <p className="text-gray-600 text-lg md:text-xl">Here's a set of frequently asked questions (FAQ) for Learnrithm AI, along with answers that highlight key features and details about your platform:.</p>
+                    <p className="text-gray-600 text-lg md:text-xl">Heres a set of frequently asked questions (FAQ) for Learnrithm AI, along with answers that highlight key features and details about your platform:.</p>
                     <div className= " my-10">
                     <AnimatedButton
                         className="hidden  text-[#151617] bg-white shadow-xl  "
@@ -191,7 +191,9 @@ const FAQSection: React.FC = () => {
                             <div
                                 key={index}
                                 className=" overflow-hidden transition-all duration-500 flex   relative   "
-                                ref={el => itemsRef.current[index] = el}
+                                ref={(el) => {
+                                    itemsRef.current[index] = el;
+                                  }}
                                 onMouseEnter={() => handleMouseEnter(index)}
                                 onMouseLeave={() => handleMouseLeave(index)}
                             >
@@ -227,7 +229,9 @@ const FAQSection: React.FC = () => {
 
                                     {/* Answer */}
                                     <div
-                                        ref={el => answersRef.current[index] = el}
+                                      ref={(el) => {
+                                        answersRef.current[index] = el;
+                                      }}
                                         className="overflow-hidden bg-white shadow-lg border-gray-200  rounded-3xl rounded-bl-[0]"
                                         style={{ height: index === 0 ? 'auto' : 0 }}
                                     >

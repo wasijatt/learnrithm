@@ -14,7 +14,7 @@ const useAnimatedButton = () => {
     setTranslateY(y * 0.8);
   };
 
-  const handleMouseLeave = (e: MouseEvent<HTMLAnchorElement>) => {
+  const handleMouseLeave = () => {
     setIsHovered(false);
     setTranslateX(0);
     setTranslateY(0);
