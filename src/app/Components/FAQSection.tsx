@@ -97,7 +97,8 @@ const FAQSection: React.FC = () => {
               ScrollTrigger.create({
                 trigger: faqRef.current,
                 start: "top top",
-                end: () => `+=${faqRef.current?.offsetHeight}`,
+                // end: () => `+=${faqRef.current?.offsetHeight}`,
+end: "bottom bottom",
                 pin: faqheadref.current,
                 pinSpacing: false,
                 scrub: false,
@@ -163,7 +164,7 @@ const FAQSection: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen w-full md:w-[95%] bg-gradient-to-br from-gray-50 to-gray-100 py-16 pb-0 px-4">
+        <div className="min-h-screen w-full md:w-[95%] bg-gradient-to-br from-gray-50 to-gray-100 py-16 pb-0 px-4 !h-full mb-[10%] ">
             <div className="max-w-full mx-auto md:flex  " >
                         {/* Header */}
                 <div ref={faqheadref} className=" w-full lg:w-[40%] md:text-start p-4 text-center md:py-[13%]  md:px-8 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">

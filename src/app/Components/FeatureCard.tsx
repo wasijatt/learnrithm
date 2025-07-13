@@ -46,15 +46,15 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, Icon, bgImage, innerRe
       {/* Icon and title */}
       <div
         className="relative z-10 flex items-center gap-4 p-6 bg-[#2f2f2f14] backdrop-blur-3xl transition-transform duration-300 ease-out overflow-hidden"
-       style={dynamicTransform}
+      
       >
         <div
           className="primary-bg  rounded-2xl rounded-bl-[0px] transition-transform duration-300 ease-out"
            
         >
-          <Icon  style={dynamicTransform} className="text-white  w-10 h-10 p-2" />
+          <Icon   className="text-white  w-10 h-10 p-2" />
         </div>
-        <h4 style={dynamicTransform} className="font-semibold text-white text-left text-sm md:text-xl">
+        <h4  className="font-semibold text-white text-left text-sm md:text-xl">
           {title}
         </h4>
       </div>
