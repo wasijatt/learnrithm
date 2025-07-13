@@ -1,4 +1,3 @@
-// src/types/faq.d.ts
 
 export interface FAQItem {
     question: string;

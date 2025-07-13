@@ -47,6 +47,7 @@ const AnimatedButton: React.FC<AnimatedButtonProps> = ({
     setIsHovered(false);
     handleMouseLeave();
 
+
     if (borderRef.current) {
       gsap.to(borderRef.current, {
         width: "100%",

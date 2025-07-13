@@ -1,95 +1,113 @@
-// "use client"
-// import React, { useEffect, useRef } from 'react';
-// import { gsap } from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// gsap.registerPlugin(ScrollTrigger);
+'use client';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import FeatureCard from './FeatureCard';
+import AnimatedButton from './AnimatedButton';
+import HeadingHover from './HeadingHover';
+import {
+    BrainCircuit,
+    FileText,
+    Languages,
+    BarChart3,
+    Upload,
+    ListChecks,
+} from 'lucide-react';
 
-// const features = [
-//   {
-//     icon: '/icons/ai.svg',
-//     title: 'AI-Powered Teaching',
-//   },
-//   {
-//     icon: '/icons/quizzes.svg',
-//     title: 'Interactive Quizzes',
-//   },
-//   {
-//     icon: '/icons/multilingual.svg',
-//     title: 'Multilingual Support',
-//   },
-//   {
-//     icon: '/icons/visual.svg',
-//     title: 'Visual Aids and Resources',
-//   },
-//   {
-//     icon: '/icons/upload.svg',
-//     title: 'Study Material Upload',
-//   },
-//   {
-//     icon: '/icons/progress.svg',
-//     title: 'Progress Tracking',
-//   },
-//   {
-//     icon: '/icons/path.svg',
-//     title: 'Personalized Learning Path',
-//   },
-// ];
+gsap.registerPlugin(ScrollTrigger);
 
-// const KeyFeatures = () => {
-//   const cardsRef = useRef<HTMLDivElement[]>([]);
+const features = [
+    {
+        title: 'AI-Powered Teaching',
+        Icon: BrainCircuit,
+        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
+    },
+    {
+        title: 'Interactive Quizzes',
+        Icon: ListChecks,
+        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
 
-//   useEffect(() => {
-//     cardsRef.current.forEach((card, i) => {
-//       gsap.fromTo(
-//         card,
-//         { y: 50, opacity: 0 },
-//         {
-//           y: 0,
-//           opacity: 1,
-//           duration: 0.8,
-//           delay: i * 0.15,
-//           ease: 'power3.out',
-//           scrollTrigger: {
-//             trigger: card,
-//             start: 'top 90%',
-//           },
-//         }
-//       );
-//     });
-//   }, []);
+    },
+    {
+        title: 'Multilingual Support',
+        Icon: Languages,
+        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
 
-//   return (
-//     <section className="px-6 md:px-20 py-16 max-w-7xl mx-auto text-center">
-//       <p className="text-[#0E65F0] font-medium text-sm mb-2">● KEY FEATURES</p>
-//       <h2 className="text-3xl md:text-4xl font-semibold leading-relaxed mb-6">
-//         <span className="font-bold">Learnrithm AI</span> is a user-friendly learning platform that makes studying easier and more fun. <br className="hidden md:block" /> It has <span className="font-bold">smart tools</span> that let you <span className="font-bold">customize your lessons</span>, helping you learn in a way that works best for you. With Learnrithm AI, you can get the help you need to <span className="font-bold">succeed in school!</span>
-//       </h2>
+    },
+    {
+        title: 'Visual Aids and Resources',
+        Icon: BarChart3,
+        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
 
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10">
-//         {features.map((feature, idx) => (
-//           <div
-//             key={idx}
-//             ref={(el) => (cardsRef.current[idx] = el!)}
-//             className="bg-[#F4E6E2] p-6 rounded-xl flex flex-col items-start gap-4 shadow-md hover:shadow-xl transition-shadow duration-300 h-44 justify-center"
-//           >
-//             <div className="bg-[#0E65F0] p-2 rounded-full">
-//               <img src={feature.icon} alt={feature.title} className="w-6 h-6" />
-//             </div>
-//             <h4 className="font-semibold text-left text-sm md:text-base text-black">
-//               {feature.title}
-//             </h4>
-//           </div>
-//         ))}
-//         <div className="flex items-center justify-center">
-//           <button className="bg-[#F4E6E2] hover:bg-[#f3d9d2] transition p-3 rounded-full">
-//             <svg width="18" height="18" fill="#0E65F0" viewBox="0 0 24 24">
-//               <path d="M13 5l7 7-7 7M5 12h14" stroke="#0E65F0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-//             </svg>
-//           </button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
+    },
+    {
+        title: 'Study Material Upload',
+        Icon: Upload,
+        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
 
-// export default KeyFeatures;
+    },
+    {
+        title: 'Progress Tracking',
+        Icon: FileText,
+        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
+
+    },
+];
+
+const KeyFeatures = () => {
+    const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+    useEffect(() => {
+        cardsRef.current.forEach((card, i) => {
+            if (!card) return;
+            gsap.fromTo(
+                card,
+                { y: 100 },
+                {
+                    y: 0,
+
+                    duration: 1.2,
+                    delay: i * 0.15,
+                    ease: 'power3.out',
+                    stagger: 0.5,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 80%',
+                        // scrub: true,
+
+                    },
+                }
+            );
+        });
+    }, []);
+
+    return (
+        <section className="px-6 md:px-20 py-16 max-w-7xl mx-auto text-center">
+
+            <HeadingHover className='inline font-bold primary-bg py-3.5 px-5 rounded-xl !text-white md:m-2  ' text='Learnrithm AI ' />
+            <HeadingHover radius={35} className='inline  ' text=' is a user-friendly learning platform that makes studying easier and more fun.
+             It has smart tools that let you customize your lessons, helping you learn in a way that works best for you. With Learnrithm AI, you can get the help you need to succeed in school!'/>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10">
+                {features.map((feature, idx) => (
+                    <FeatureCard
+                        key={idx}
+                        title={feature.title}
+                        Icon={feature.Icon}
+                        bgImage={feature.bgImage}
+                       innerRef={(el) => (cardsRef.current[idx] = el)}
+
+                    />
+                ))}
+            </div>
+
+            <AnimatedButton
+                className="hidden mx-auto mt-10 text-[#151617] bg-white shadow-xl font-bold"
+                href="/"
+                content="Explore more Features"
+            />
+        </section>
+    );
+};
+
+export default KeyFeatures;

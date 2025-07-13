@@ -1,6 +1,3 @@
-// types/AnimatedButtonTypes.ts
-
-import React from "react";
 
 export interface AnimatedButtonProps {
   href: string;
