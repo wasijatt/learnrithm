@@ -1,72 +1,3 @@
-
-// import React from 'react';
-
-// type HoverTextProps = {
-//   text: string;
-//   className?: string;
-// };
-
-// const HeadingHover: React.FC<HoverTextProps> = ({ text, className = '' }) => {
-//   return (
-//     <h2 className={`inline-block ${className}`}>
-//       {text.split('').map((char, index) => (
-//         <span
-//           key={index}
-//           className=" text-xl md:text-3xl  inline-block transition-all duration-300 hover:text-primary hover:scale-125 hover:text-[#1877F2] font-medium  hover:font-extrabold"
-//         >
-//           {char === ' ' ? '\u00A0' : char}
-//         </span>
-//       ))}
-//     </h2>
-//   );
-// };
-
-// export default HeadingHover;
-
-// 'use client';
-
-// import React, { useState } from 'react';
-// import { clsx } from 'clsx';
-
-// type HoverTextProps = {
-//   text: string;
-//   className?: string;
-//   radius?: number; // Number of characters around the hovered character
-// };
-
-// const HeadingHover: React.FC<HoverTextProps> = ({ text, className = '', radius = 2 }) => {
-//   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-
-//   return (
-//     <h2 className={clsx('flex flex-wrap ', className)}>
-//       {text.split('').map((char, index) => {
-//         const isInRadius =
-//           hoverIndex !== null && Math.abs(index - hoverIndex) <= radius;
-
-//         return (
-//           <span
-//             key={index}
-//             onMouseEnter={() => setHoverIndex(index)}
-//             onMouseLeave={() => setHoverIndex(null)}
-//             className={clsx(
-//               'text-xl md:text-3xl inline-block transition-all duration-300 ',
-//               isInRadius
-//                 ? 'text-[#1877F2] scale-125 font-extrabold'
-//                 : 'text-black font-medium'
-//             )}
-//           >
-//             {char === ' ' ? '\u00A0' : char}
-//           </span>
-//         );
-//       })}
-//     </h2>
-//   );
-// };
-
-// export default HeadingHover;
-
-
-
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -129,7 +60,7 @@ const HeadingHover: React.FC<HoverTextProps> = ({ text, className = '', radius =
     "char text-xl md:text-2xl inline-block transition-all duration-300",
     isActive
       ? "text-black scale-125 font-extrabold p-[1px]"
-      : "text-black font-medium"
+      : "text-black font-normal"
   )}
   onMouseEnter={() => setHoveredIndex(index)}
   onMouseLeave={() => setHoveredIndex(null)}

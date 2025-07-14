@@ -62,10 +62,10 @@ const KeyFeatures = () => {
             if (!card) return;
             gsap.fromTo(
                 card,
-                { y: 100 },
+                { y: 100, opacity: 0 },
                 {
                     y: 0,
-
+                    opacity: 1,
                     duration: 1.2,
                     delay: i * 0.15,
                     ease: 'power3.out',
@@ -82,9 +82,9 @@ const KeyFeatures = () => {
     }, []);
 
     return (
-        <section className="px-6 md:px-20 py-16 max-w-7xl mx-auto text-center">
+        <section className=" mt-[5%] px-6 md:px-20 py-16 max-w-7xl mx-auto text-center">
 
-            <HeadingHover className='inline font-bold primary-bg py-3.5 px-5 rounded-xl !text-white md:m-2  ' text='Learnrithm AI ' />
+            <HeadingHover className='inline font-extrabold primary-bg py-3.5 px-5 rounded-xl !text-white md:m-2  ' text='Learnrithm AI ' />
             <HeadingHover radius={35} className='inline  ' text=' is a user-friendly learning platform that makes studying easier and more fun.
              It has smart tools that let you customize your lessons, helping you learn in a way that works best for you. With Learnrithm AI, you can get the help you need to succeed in school!'/>
 
@@ -95,7 +95,7 @@ const KeyFeatures = () => {
                         title={feature.title}
                         Icon={feature.Icon}
                         bgImage={feature.bgImage}
-                       innerRef={(el) => (cardsRef.current[idx] = el)}
+                        innerRef={(el) => (cardsRef.current[idx] = el)}
 
                     />
                 ))}

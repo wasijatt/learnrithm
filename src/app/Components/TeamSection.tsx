@@ -47,7 +47,7 @@ const TeamSection = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray('.team-card');
+      const cards = gsap.utils.toArray<HTMLElement>('.team-card');
 
       cards.forEach((card) => {
         gsap.set(card, {
@@ -87,7 +87,7 @@ const TeamSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="primary-bg rounded-4xl rounded-bl-[0px] shadow-xl py-20 px-6 md:px-20 overflow-hidden z-50 text-white"
+      className="primary-bg rounded-4xl rounded-bl-[0px] shadow-xl py-20 px-6 md:px-20 overflow-hidden z-40 text-white"
     >
       <div className="text-center mb-16">
       

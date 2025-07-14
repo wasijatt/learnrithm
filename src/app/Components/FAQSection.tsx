@@ -7,6 +7,7 @@ import { FAQItem } from "../types/FAQ";
 import AnimatedButton from "./AnimatedButton";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMemo } from "react";
+
 gsap.registerPlugin(ScrollTrigger);
 const FAQSection: React.FC = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -15,7 +16,7 @@ const FAQSection: React.FC = () => {
     const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
     const answersRef = useRef<(HTMLDivElement | null)[]>([]);
 
-    const faqData = useMemo<FAQItem[]>(() =>  [
+    const faqData = useMemo<FAQItem[]>(() => [
 
         {
             question: "What is Learnrithm Ai?",
@@ -94,19 +95,19 @@ const FAQSection: React.FC = () => {
 
         if (window.matchMedia("(min-width: 1024px)").matches) {
             const ctx = gsap.context(() => {
-              ScrollTrigger.create({
-                trigger: faqRef.current,
-                start: "top top",
-                // end: () => `+=${faqRef.current?.offsetHeight}`,
-end: "bottom bottom",
-                pin: faqheadref.current,
-                pinSpacing: false,
-                scrub: false,
-              });
+                ScrollTrigger.create({
+                    trigger: faqRef.current,
+                    start: "top top",
+                    // end: () => `+=${faqRef.current?.offsetHeight}`,
+                    end: "bottom bottom",
+                    pin: faqheadref.current,
+                    pinSpacing: false,
+                    scrub: false,
+                });
             });
-      
+
             return () => ctx.revert();
-          }
+        }
     }, []);
 
     const toggleFAQ = (index: number) => {
@@ -124,13 +125,13 @@ end: "bottom bottom",
             const el = answersRef.current[index];
             el.style.height = "auto";
             const fullHeight = el.scrollHeight;
-        
+
             gsap.fromTo(el,
                 { height: 0 },
                 { height: fullHeight, duration: 0.6, ease: "power2.inOut" }
             );
         }
-        
+
 
         gsap.to(itemsRef.current[index], {
             scale: 1.02,
@@ -166,18 +167,19 @@ end: "bottom bottom",
     return (
         <div className="min-h-screen w-full md:w-[95%] bg-gradient-to-br from-gray-50 to-gray-100 py-16 pb-0 px-4 !h-full mb-[10%] ">
             <div className="max-w-full mx-auto md:flex  " >
-                        {/* Header */}
+                {/* Header */}
                 <div ref={faqheadref} className=" w-full lg:w-[40%] md:text-start p-4 text-center md:py-[13%]  md:px-8 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
-                    <h1 className=" text-3xl md:text-6xl font-bold text-gray-900 mb-4">Frequently Asked Questions
+                    <h1 className=" text-3xl md:text-6xl font-bold text-gray-900 mb-4 ">Frequently Asked Questions
                     </h1>
+                    {/* <AnimatedHeading mainText="Frequently Asked Questions" subText=""  className="!text-3xl md:!text-6xl !font-bold !text-gray-900 mb-4"/> */}
                     <p className="text-gray-600 text-lg md:text-xl">Heres a set of frequently asked questions (FAQ) for Learnrithm AI, along with answers that highlight key features and details about your platform:.</p>
-                    <div className= " my-10">
-                    <AnimatedButton
-                        className="hidden  text-[#151617] bg-white shadow-xl  "
-                        href="/"
-                        content="Still have a Question?"
-                        style={{ background: "" }}
-                    />
+                    <div className=" my-10">
+                        <AnimatedButton
+                            className="hidden  text-[#151617] bg-white shadow-xl  "
+                            href="/"
+                            content="Still have a Question?"
+                            style={{ background: "" }}
+                        />
                     </div>
                 </div>
                 <div
@@ -194,7 +196,7 @@ end: "bottom bottom",
                                 className=" overflow-hidden transition-all duration-500 flex   relative   "
                                 ref={(el) => {
                                     itemsRef.current[index] = el;
-                                  }}
+                                }}
                                 onMouseEnter={() => handleMouseEnter(index)}
                                 onMouseLeave={() => handleMouseLeave(index)}
                             >
@@ -230,9 +232,9 @@ end: "bottom bottom",
 
                                     {/* Answer */}
                                     <div
-                                      ref={(el) => {
-                                        answersRef.current[index] = el;
-                                      }}
+                                        ref={(el) => {
+                                            answersRef.current[index] = el;
+                                        }}
                                         className="overflow-hidden bg-white shadow-lg border-gray-200  rounded-3xl rounded-bl-[0]"
                                         style={{ height: index === 0 ? 'auto' : 0 }}
                                     >

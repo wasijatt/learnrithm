@@ -64,7 +64,10 @@ const ResultCounter = () => {
         {counters.map((counter, index) => (
           <div key={index} className="flex flex-col items-center space-y-4 bg-white shadow-lg rounded-xl p-6 primary">
             <span
-              ref={(el) => el && (numberRefs.current[index] = el)}
+            ref={(el) => {
+  if (el) numberRefs.current[index] = el;
+}}
+
               className="text-2xl md:text-4xl  font-extrabold "
             >
               0

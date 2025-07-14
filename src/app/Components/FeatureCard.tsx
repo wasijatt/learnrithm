@@ -50,11 +50,11 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, Icon, bgImage, innerRe
       >
         <div
           className="primary-bg  rounded-2xl rounded-bl-[0px] transition-transform duration-300 ease-out"
-           
+            style={dynamicTransform}
         >
           <Icon   className="text-white  w-10 h-10 p-2" />
         </div>
-        <h4  className="font-semibold text-white text-left text-sm md:text-xl">
+        <h4  style={dynamicTransform} className="font-semibold text-white text-left text-sm md:text-xl">
           {title}
         </h4>
       </div>
