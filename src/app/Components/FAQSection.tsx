@@ -1,16 +1,18 @@
+
+
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { FAQItem } from "../types/FAQ";
 import AnimatedButton from "./AnimatedButton";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useMemo } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
+
 const FAQSection: React.FC = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
     const faqRef = useRef<HTMLDivElement>(null);
     const faqheadref = useRef<HTMLDivElement>(null);
     const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -66,7 +68,6 @@ const FAQSection: React.FC = () => {
         },
     ], []);
 
-
     useEffect(() => {
         const tl = gsap.timeline();
 
@@ -74,35 +75,37 @@ const FAQSection: React.FC = () => {
             opacity: 0,
             y: 60,
             duration: 1.2,
-            ease: "power2.out"
+            ease: "power2.out",
         });
 
         itemsRef.current.forEach((item, index) => {
             if (item) {
-                tl.from(item, {
-                    duration: 0.6,
-                    ease: "power2.out"
-                }, index * 0.1);
+                tl.from(
+                    item,
+                    {
+                        duration: 0.6,
+                        ease: "power2.out",
+                    },
+                    index * 0.1
+                );
             }
         });
 
-        answersRef.current.forEach((answer, index) => {
+        answersRef.current.forEach((answer) => {
             if (answer) {
-                gsap.set(answer, { height: index === 0 ? "auto" : 0 });
+                gsap.set(answer, { height: 0 });
             }
         });
-
 
         if (window.matchMedia("(min-width: 1024px)").matches) {
             const ctx = gsap.context(() => {
                 ScrollTrigger.create({
                     trigger: faqRef.current,
                     start: "top top",
-                    // end: () => `+=${faqRef.current?.offsetHeight}`,
                     end: "bottom bottom",
                     pin: faqheadref.current,
-                    pinSpacing: false,
-                    scrub: false,
+                    pinSpacing: true,
+                    scrub: true,
                 });
             });
 
@@ -111,34 +114,47 @@ const FAQSection: React.FC = () => {
     }, []);
 
     const toggleFAQ = (index: number) => {
-        if (activeIndex === index) return;
+        if (activeIndex === index) {
+            // Close the same item
+            if (answersRef.current[index]) {
+                gsap.to(answersRef.current[index], {
+                    height: 0,
+                    duration: 0.4,
+                    ease: "power2.inOut",
+                });
+            }
+            setActiveIndex(null);
+            return;
+        }
 
-        if (answersRef.current[activeIndex]) {
+        // Close previous
+        if (activeIndex !== null && answersRef.current[activeIndex]) {
             gsap.to(answersRef.current[activeIndex], {
                 height: 0,
                 duration: 0.4,
-                ease: "power2.inOut"
+                ease: "power2.inOut",
             });
         }
 
+        // Open current
         if (answersRef.current[index]) {
             const el = answersRef.current[index];
             el.style.height = "auto";
             const fullHeight = el.scrollHeight;
 
-            gsap.fromTo(el,
+            gsap.fromTo(
+                el,
                 { height: 0 },
                 { height: fullHeight, duration: 0.6, ease: "power2.inOut" }
             );
         }
-
 
         gsap.to(itemsRef.current[index], {
             scale: 1.02,
             duration: 0.2,
             yoyo: true,
             repeat: 1,
-            ease: "power2.inOut"
+            ease: "power2.inOut",
         });
 
         setActiveIndex(index);
@@ -149,7 +165,7 @@ const FAQSection: React.FC = () => {
             gsap.to(itemsRef.current[index], {
                 scale: 1.01,
                 duration: 0.2,
-                ease: "power2.out"
+                ease: "power2.out",
             });
         }
     };
@@ -159,62 +175,79 @@ const FAQSection: React.FC = () => {
             gsap.to(itemsRef.current[index], {
                 scale: 1,
                 duration: 0.2,
-                ease: "power2.out"
+                ease: "power2.out",
             });
         }
     };
 
     return (
-        <div className="min-h-screen w-full md:w-[95%] bg-gradient-to-br from-gray-50 to-gray-100 py-16 pb-0 px-4 !h-full mb-[10%] ">
-            <div className="max-w-full mx-auto md:flex  " >
+        <div className="min-h-screen w-full md:w-[95%] bg-gradient-to-br from-gray-50 to-gray-100 py-16 pb-0 px-4 !h-full mb-[10%]">
+            <div className="max-w-full mx-auto md:flex">
                 {/* Header */}
-                <div ref={faqheadref} className=" w-full lg:w-[40%] md:text-start p-4 text-center md:py-[13%]  md:px-8 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100">
-                    <h1 className=" text-3xl md:text-6xl font-bold text-gray-900 mb-4 ">Frequently Asked Questions
+                <div
+                    ref={faqheadref}
+                    className="w-full lg:w-[40%] md:text-start p-4 text-center md:py-[13%] md:px-8 bg-gradient-to-r from-gray-50 to-white border-b border-gray-100"
+                >
+                    <h1 className="text-3xl md:text-6xl font-bold text-gray-900 mb-4">
+                        Frequently Asked Questions
                     </h1>
-                    {/* <AnimatedHeading mainText="Frequently Asked Questions" subText=""  className="!text-3xl md:!text-6xl !font-bold !text-gray-900 mb-4"/> */}
-                    <p className="text-gray-600 text-lg md:text-xl">Heres a set of frequently asked questions (FAQ) for Learnrithm AI, along with answers that highlight key features and details about your platform:.</p>
-                    <div className=" my-10">
+                    <p className="text-gray-600 text-lg md:text-xl">
+                        Here&apos;s  a set of frequently asked questions (FAQ) for Learnrithm AI.
+                    </p>
+                    <div className="my-10">
                         <AnimatedButton
-                            className="hidden  text-[#151617] bg-white shadow-xl  "
+                            className="hidden text-[#151617] bg-white shadow-xl"
                             href="/"
                             content="Still have a Question?"
-                            style={{ background: "" }}
                         />
                     </div>
                 </div>
+
+                {/* FAQ List */}
                 <div
                     ref={faqRef}
-                    className=" rounded-3xl shadow-2xl overflow-hidden border border-gray-100 w-full lg:w-[60%]  "
+                    className="rounded-3xl shadow-2xl overflow-hidden border border-gray-100 w-full lg:w-[60%]"
                 >
-
-
-                    {/* FAQ Items */}
                     <div className="md:p-4 md:space-y-2">
                         {faqData.map((item, index) => (
                             <div
                                 key={index}
-                                className=" overflow-hidden transition-all duration-500 flex   relative   "
+                                className="overflow-hidden transition-all duration-500 flex relative"
                                 ref={(el) => {
                                     itemsRef.current[index] = el;
                                 }}
                                 onMouseEnter={() => handleMouseEnter(index)}
                                 onMouseLeave={() => handleMouseLeave(index)}
                             >
-                                <div className=" absolute bottom-8 ">
-                                    <Image width={100} height={100} alt='Faqs Image' quality={75} src={item.src} className="rounded-full w-7 h-7" />
+                                <div className="absolute bottom-8">
+                                    <Image
+                                        width={100}
+                                        height={100}
+                                        alt="Faqs Image"
+                                        quality={75}
+                                        src={item.src}
+                                        className="rounded-full w-7 h-7"
+                                    />
                                 </div>
-                                <div className=" p-4 pl-8.5">
-                                    {/* Question Button */}
+
+                                <div className="p-4 pl-8.5 w-full">
                                     <button
                                         onClick={() => toggleFAQ(index)}
-                                        className={`  text-left focus:outline-none  transition-all duration-300 }`}
+                                        className="text-left focus:outline-none w-full"
                                     >
-                                        <div className="flex items-center justify-between">
-                                            <span className={`font-medium text-base px-6 py-4 rounded-2xl rounded-bl-[0px]  hover:shadow-lg ${activeIndex === index
-                                                ? 'bg-gray-800 text-white'
-                                                : 'bg-white text-gray-800 hover:bg-gray-50'}`}>{item.question}</span>
-                                            <span className={`transform transition-transform duration-300 bg-gray-600 rounded-full p-1 mx-2.5 ${activeIndex === index ? 'rotate-45' : 'rotate-0'
-                                                }`}>
+                                        <div className="flex items-center ">
+                                            <span
+                                                className={`font-medium text-base px-6 py-4 rounded-2xl rounded-bl-[0px] hover:shadow-lg ${activeIndex === index
+                                                        ? "bg-gray-800 text-white"
+                                                        : "bg-white text-gray-800 hover:bg-gray-50"
+                                                    }`}
+                                            >
+                                                {item.question}
+                                            </span>
+                                            <span
+                                                className={`transform transition-transform duration-300 bg-gray-600 rounded-full p-1 mx-2.5 ${activeIndex === index ? "rotate-45" : "rotate-0"
+                                                    }`}
+                                            >
                                                 <svg
                                                     width="20"
                                                     height="20"
@@ -230,31 +263,18 @@ const FAQSection: React.FC = () => {
                                         </div>
                                     </button>
 
-                                    {/* Answer */}
                                     <div
+                                        className="px-6 overflow-hidden transition-all ease-out duration-500 text-sm text-gray-700"
                                         ref={(el) => {
                                             answersRef.current[index] = el;
                                         }}
-                                        className="overflow-hidden bg-white shadow-lg border-gray-200  rounded-3xl rounded-bl-[0]"
-                                        style={{ height: index === 0 ? 'auto' : 0 }}
                                     >
-                                        <div className="px-6 py-6 text-gray-700 leading-relaxed">
-                                            <div className="flex items-start space-x-3">
-
-                                                <div className="flex-1">
-                                                    <p className="text-gray-800 ">{item.answer}</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <p className="py-4 pr-6">{item.answer}</p>
                                     </div>
                                 </div>
-
-
                             </div>
                         ))}
                     </div>
-
-
                 </div>
             </div>
         </div>

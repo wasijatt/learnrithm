@@ -36,10 +36,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, Icon, bgImage, innerRe
         <Image
           src={bgImage}
           alt={title}
-          layout="fill"
-          objectFit="cover"
-        
-          className="  "
+          fill
+          className="object-cover w-full h-full"
+      
         />
       </div>
 

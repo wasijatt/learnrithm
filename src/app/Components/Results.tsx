@@ -38,7 +38,7 @@ const ResultCounter = () => {
           snap: { innerText: 1 },
           scrollTrigger: {
             trigger: containerRef.current,
-            start: 'top 80%',
+            start: 'top 70%',
             toggleActions: 'play none none reverse',
           },
           onUpdate: function () {

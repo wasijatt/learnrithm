@@ -92,7 +92,7 @@ const TeamSection = () => {
       <div className="text-center mb-16">
       
         <h2 className="text-4xl font-bold">
-          <span className="bg-white text-[#262525] py-2 px-5 rounded-2xl  -rotate-45">Expert team</span> behind Learnrithm AI
+          <span className="bg-white text-[#262525] py-1 md:py-2 px-5 rounded-2xl  -rotate-45">Expert team</span> behind Learnrithm AI
         </h2>
         <p className="mt-4  max-w-xl mx-auto">
           Our philosophy is simple — hire a team of diverse, passionate people and foster a

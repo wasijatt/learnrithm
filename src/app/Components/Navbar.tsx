@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
             src="/Full logo.png"
             alt="Learnrithm Logo"
             width={150}
-            height={200}
+            height={50}
             className="w-[100px] md:w-full transition-transform duration-300 ease-out will-change-transform"
           />
         </div>
@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
           <Link
             ref={buttonRef}
             href="/get-started"
-            className="relative inline-flex items-center justify-center text-white text-xl font-medium px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-indigo-600 hover:to-blue-700 transition-all duration-300 shadow-lg overflow-hidden"
+            className="relative inline-flex items-center justify-center text-white text-sm md:text-xl  font-medium px-3 md:px-6 py-1 md:py-3 rounded-full bg-gradient-to-r from-blue-600 to-indigo-500 hover:from-indigo-600 hover:to-blue-700 transition-all duration-300 shadow-lg overflow-hidden"
           >
             <span
               style={dynamicTransform}

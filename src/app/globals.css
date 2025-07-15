@@ -19,3 +19,22 @@ body , html{
 .secondary-bg{
   background-color: #151617;
 }
+@font-face {
+  font-family: 'Font Spring';
+  src: url('/Fonts/Fontspring-DEMO-juana-lightit.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Neue Plak Bold';
+  src: url('/Fonts/Neue Plak Bold.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+.font-spring{
+  font-family: 'Font Spring', sans-serif;
+}.font-neue{
+  font-family: 'Neue Plak Bold', sans-serif;
+}

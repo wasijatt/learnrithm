@@ -20,36 +20,36 @@ const features = [
     {
         title: 'AI-Powered Teaching',
         Icon: BrainCircuit,
-        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
+        bgImage: '/Feature/AI Teacher.jpeg',
     },
     {
         title: 'Interactive Quizzes',
         Icon: ListChecks,
-        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
+        bgImage: '/Feature/Quiz.jpeg',
 
     },
     {
         title: 'Multilingual Support',
         Icon: Languages,
-        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
+        bgImage: '/Feature/multiLingual.jpeg',
 
     },
     {
         title: 'Visual Aids and Resources',
         Icon: BarChart3,
-        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
+        bgImage: '/Feature/visual aid and resources.jpeg',
 
     },
     {
         title: 'Study Material Upload',
         Icon: Upload,
-        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
+        bgImage: '/Feature/study material.jpeg',
 
     },
     {
         title: 'Progress Tracking',
         Icon: FileText,
-        bgImage: '/How to Learn Graphic Designing in 2025-getimagin desigagency iuk.jpg',
+        bgImage: '/Feature/progress tracking.jpeg',
 
     },
 ];
@@ -84,7 +84,7 @@ const KeyFeatures = () => {
     return (
         <section className=" mt-[5%] px-6 md:px-20 py-16 max-w-7xl mx-auto text-center">
 
-            <HeadingHover className='inline font-extrabold primary-bg py-3.5 px-5 rounded-xl !text-white md:m-2  ' text='Learnrithm AI ' />
+            <HeadingHover className='inline font-extrabold primary-bg py-2.5 px-5 rounded-xl !text-white   md:my-2  ' text='Learnrithm AI ' />
             <HeadingHover radius={35} className='inline  ' text=' is a user-friendly learning platform that makes studying easier and more fun.
              It has smart tools that let you customize your lessons, helping you learn in a way that works best for you. With Learnrithm AI, you can get the help you need to succeed in school!'/>
 

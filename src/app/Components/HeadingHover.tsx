@@ -57,10 +57,10 @@ const HeadingHover: React.FC<HoverTextProps> = ({ text, className = '', radius =
          <span
   key={index}
   className={clsx(
-    "char text-xl md:text-2xl inline-block transition-all duration-300",
+    "char text-xl md:text-2xl inline-block transition-all duration-300 word-nowrap",
     isActive
       ? "text-black scale-125 font-extrabold p-[1px]"
-      : "text-black font-normal"
+      : " font-normal"
   )}
   onMouseEnter={() => setHoveredIndex(index)}
   onMouseLeave={() => setHoveredIndex(null)}
