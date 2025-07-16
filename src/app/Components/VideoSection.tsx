@@ -50,7 +50,7 @@ const VideoSection = () => {
 
 
   return (
-    <section ref={sectionRef} className=" w-full  md:w-[90]  shadow-md transition-shadow px-6 md:px-20 py-10 bg-[#ececec] secondary">
+    <section ref={sectionRef} className=" w-full  md:w-[90%]  shadow-md transition-shadow px-6 md:px-20 py-10 bg-[#ececec] secondary">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
         {/* Left Content */}
         <div className="md:w-1/2 space-y-6">
