@@ -8,6 +8,7 @@ import KeyFeatures from './Components/KeyFeatures';
 import VideoSection from './Components/VideoSection';
 import FAQSection from './Components/FAQSection';
 import Footer from './Components/Footer';
+import TrustedPartners from './Components/TrustedPartners';
 // import Testimonials from './Components/Testimonials';
 const TeamSection = dynamic(() => import('./Components/TeamSection'), { ssr: false });
 const ComparisonTable = dynamic(() => import('./Components/ComparisonTable'), { ssr: false });
@@ -18,6 +19,8 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <KeyFeatures />
+      <TrustedPartners />
+
       <VideoSection />
       <FAQSection />
       {/* <Testimonials /> */}

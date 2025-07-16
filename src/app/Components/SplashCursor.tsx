@@ -18,7 +18,7 @@ type Particle = {
   el: HTMLDivElement;
 };
 
-const COLORS = ['#1877F2', '#ffffff'];
+const COLORS = ['#1877F2'];
 
 const SplashCursor: React.FC<SplashCursorProps> = ({ containerId = '#hero' }) => {
   const particles = useRef<Particle[]>([]);
