@@ -5,12 +5,12 @@ import Image from "next/image";
 import { useGsapFadeUp } from "../Hooks/GsapFadeupAnimation";
 
 const universities = [
-  { name: "University of Cambridge", logo: "/Uni-Images/Camrage.png" },
-  { name: "University of Oxford", logo: "/Uni-Images/Osford.png" },
-  { name: "Princeton University", logo: "/Uni-Images/princeton.png" },
-  { name: "Imperial College London", logo: "/Uni-Images/imperial.png" },
-  { name: "Queen Mary University of London", logo: "/Uni-Images/mary.png" },
-  { name: "University of Edinburgh", logo: "/Uni-Images/eding.png" },
+  { name: "University of Cambridge", logo: "/uniimages/Camrage.png" },
+  { name: "University of Oxford", logo: "/uniimages/Osford.png" },
+  { name: "Princeton University", logo: "/uniimages/princeton.png" },
+  { name: "Imperial College London", logo: "/uniimages/imperial.png" },
+  { name: "Queen Mary University of London", logo: "/uniimages/mary.png" },
+  { name: "University of Edinburgh", logo: "/uniimages/eding.png" },
   { name: "University of Bristol", logo: "/Uni-Images/bristol.png" },
   { name: "Stanford University", logo: "/Uni-Images/standford.png" },
 ];
