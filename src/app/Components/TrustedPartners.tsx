@@ -11,8 +11,8 @@ const universities = [
   { name: "Imperial College London", logo: "/uniimages/imperial.png" },
   { name: "Queen Mary University of London", logo: "/uniimages/mary.png" },
   { name: "University of Edinburgh", logo: "/uniimages/eding.png" },
-  { name: "University of Bristol", logo: "/Uni-Images/bristol.png" },
-  { name: "Stanford University", logo: "/Uni-Images/standford.png" },
+  { name: "University of Bristol", logo: "/uniimages/bristol.png" },
+  { name: "Stanford University", logo: "/uniimages/standford.png" },
 ];
 
 const TrustedPartner = () => {
