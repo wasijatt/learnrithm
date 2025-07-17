@@ -73,15 +73,14 @@ const HeroSection = () => {
 
     return (
         <section  id='hero' className="  relative w-full  md:min-h-screen bg-black text-white flex py-[30%] md:py-[10%]  justify-center px-6 md:px-10 overflow-hidden">
-            {/* Floating 3D Blob 1 */}
+            {/* first shadow */}
             <div
                 ref={floatRef1}
                 className="absolute top-[-60px] left-[-40px] w-72 h-72 bg-gradient-to-tr blur-[150px] from-purple-700 to-indigo-500 rounded-full opacity-40 z-0"
             />
             <SplashCursor containerId='#hero' />
-         
 
-            {/* Floating 3D Blob 2 */}
+            {/* second shadow */}
             <div
                 ref={floatRef2}
                 className="absolute bottom-[-60px] right-[-60px] w-80 h-80 bg-gradient-to-br from-blue-600 rounded-full blur-[150px] opacity-30 z-0"
@@ -91,7 +90,7 @@ const HeroSection = () => {
             <div className="relative  !top-0 z-10  w-full flex flex-col  items-start justify-center  md:space-x-10 md:w-[80%]">
                 <p
                     ref={subTextRef}
-                    className="text-gray-400 max-w-82 text-base md:text-lg leading-relaxed absolute top-10 hidden md:block right-20"
+                    className="text-gray-400 max-w-82 text-base md:text-lg leading-relaxed absolute top-10 hidden md:block  md:right-[5%]"
                 >Learnrithm AI makes learning simple turning complex topics into  personalized insights to help you grow faster.
                 </p>
 
@@ -104,7 +103,7 @@ const HeroSection = () => {
                         Learning doesn&apos;t <br /> have to be  <span className='inline md:hidden font-spring ml-2'> Hard</span>
                     </h1>
 
-                    <div className="flex items-center flex-wrap gap-6 md:gap-10">
+                    <div className="flex items-center flex-wrap -mt-4.5 gap-6 md:gap-10">
                         <h2 className="md:text-7xl font-spring font-bold -pt-3 hidden md:inline text-white">
                             Hard
                         </h2>
